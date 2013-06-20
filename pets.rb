@@ -1,7 +1,12 @@
-require 'pets/animal'
+require_relative './lib/animal'
 
-require 'pets/cat'
-require 'pets/dog'
-require 'pets/bird'
+require_relative './lib/cat'
+require_relative './lib/dog'
+require_relative './lib/bird'
 
-require 'pets/animal_emote'
+require_relative './lib/emote_adapter'
+require_relative './lib/emote_adapters/bird_adapter'
+require_relative './lib/emote_adapters/dog_adapter'
+require_relative './lib/emote_adapters/cat_adapter'
+
+require_relative './lib/animal_emote'

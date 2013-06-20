@@ -4,12 +4,18 @@ class AnimalEmote
   end
 
   def emote
-    if @animal.kind_of?(Dog)
-      @animal.bark
-    elsif @animal.kind_of?(Cat)
-      @animal.meow
-    elsif @animal.kind_of?(Bird)
-      @animal.chirp
+    adapter = adapter_map[@animal.class.name]
+    if adapter
+      adapter.new(@animal).emote
     end
+  end
+
+  protected
+  def adapter_map
+    {
+      "Dog" => EmoteAdapters::DogAdapter,
+      "Cat" => EmoteAdapters::CatAdapter,
+      "Bird" => EmoteAdapters::BirdAdapter
+    }
   end
 end
